@@ -9,43 +9,164 @@
   </head>
   <body>
 
-    <!-- Mountains -->
+    <!-- Sky + Mountains -->
     <div id="bg-mountains">
       <svg viewBox="0 0 1440 900" preserveAspectRatio="none"
            width="100%" height="100%"
            xmlns="http://www.w3.org/2000/svg">
-        <!-- Far range (hazy atmospheric blue-grey) -->
-        <polygon
-          points="0,900 0,455 80,390 180,440 280,335 400,408 500,290 620,362 740,308 860,382 980,296 1090,374 1200,314 1320,368 1440,360 1440,900"
-          fill="#B0C4D8"/>
-        <!-- Near range (deeper blue-slate) -->
-        <polygon
-          points="0,900 0,615 120,560 240,600 380,518 500,574 640,500 760,558 880,510 1010,562 1130,496 1260,548 1380,506 1440,542 1440,900"
-          fill="#6888A0"/>
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#E8F4FA"/>
+            <stop offset="55%"  stop-color="#C8E8F5"/>
+            <stop offset="100%" stop-color="#B5DCF0"/>
+          </linearGradient>
+          <linearGradient id="mtnFarGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#9DBACE"/>
+            <stop offset="100%" stop-color="#B8D0DC"/>
+          </linearGradient>
+          <linearGradient id="mtnNearGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#88AE88"/>
+            <stop offset="100%" stop-color="#A8C8A0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Sky -->
+        <rect width="1440" height="900" fill="url(#skyGrad)"/>
+
+        <!-- Wispy cloud streaks -->
+        <g opacity="0.45" fill="none" stroke="white" stroke-linecap="round">
+          <path d="M120,110 Q320,95 520,108" stroke-width="18"/>
+          <path d="M160,118 Q280,110 420,120" stroke-width="8"/>
+          <path d="M800,80 Q1000,68 1180,82" stroke-width="14"/>
+          <path d="M850,90 Q980,84 1100,93" stroke-width="7"/>
+          <path d="M400,145 Q550,136 680,148" stroke-width="10"/>
+          <path d="M980,130 Q1100,122 1260,135" stroke-width="12"/>
+        </g>
+
+        <!-- Far mountain range — smooth bezier, single central peak -->
+        <path d="M0,900 L0,510
+          C100,490 200,462 300,432
+          C390,403 455,365 515,328
+          C568,295 605,258 640,228
+          C665,208 690,192 715,184
+          C722,182 728,181 735,181
+          C742,181 748,182 755,184
+          C780,192 805,208 830,228
+          C865,258 902,295 955,328
+          C1015,365 1080,403 1170,432
+          C1270,462 1370,490 1440,510
+          L1440,900 Z"
+          fill="url(#mtnFarGrad)"/>
+
+        <!-- Subtle second ridge on left and right flanks -->
+        <path d="M0,900 L0,600
+          C80,582 180,570 280,558
+          C360,548 420,540 480,538
+          C520,536 550,538 570,542
+          L570,900 Z"
+          fill="#A8C2CC" opacity="0.5"/>
+        <path d="M870,542 C890,538 920,536 960,538
+          C1020,540 1080,548 1160,558
+          C1260,570 1360,582 1440,600
+          L1440,900 L870,900 Z"
+          fill="#A8C2CC" opacity="0.5"/>
+
+        <!-- Rolling mid hills (muted green) -->
+        <path d="M0,900 L0,665
+          C120,638 260,650 400,632
+          C520,616 620,604 720,606
+          C820,608 920,618 1040,634
+          C1180,652 1320,648 1440,638
+          L1440,900 Z"
+          fill="url(#mtnNearGrad)"/>
       </svg>
     </div>
 
-    <!-- Ground / grass (150px tall, matches GROUND_PADDING in main.js) -->
+    <!-- Ground + pine trees (350px tall — top 200px is tree space, bottom 150px is grass = GROUND_PADDING) -->
     <div id="bg-ground">
-      <svg viewBox="0 0 1440 150" preserveAspectRatio="none"
+      <svg viewBox="0 0 1440 350" preserveAspectRatio="none"
            width="100%" height="100%"
            xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,150 L0,20
-          Q60,4 120,17 Q180,28 240,14 Q300,2 360,16
-          Q420,28 480,13 Q540,1 600,15
-          Q660,27 720,13 Q780,1 840,15
-          Q900,27 960,13 Q1020,1 1080,15
-          Q1140,27 1200,13 Q1260,1 1320,15
-          Q1380,27 1440,14 L1440,150 Z"
-          fill="#4A9228"/>
-        <path d="M0,20
-          Q60,4 120,17 Q180,28 240,14 Q300,2 360,16
-          Q420,28 480,13 Q540,1 600,15
-          Q660,27 720,13 Q780,1 840,15
-          Q900,27 960,13 Q1020,1 1080,15
-          Q1140,27 1200,13 Q1260,1 1320,15
-          Q1380,27 1440,14"
-          fill="none" stroke="#72D438" stroke-width="9"/>
+        <defs>
+          <linearGradient id="grassGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#358A18"/>
+            <stop offset="28%"  stop-color="#4EAA26"/>
+            <stop offset="50%"  stop-color="#68C838"/>
+            <stop offset="72%"  stop-color="#4EAA26"/>
+            <stop offset="100%" stop-color="#358A18"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Grass fill — wavy top edge, ground level at y=200 (= 150px from bottom of div) -->
+        <path d="M0,350 L0,200
+          Q90,182 180,197 Q270,210 360,194
+          Q450,180 540,196 Q630,210 720,194
+          Q810,180 900,196 Q990,210 1080,194
+          Q1170,180 1260,196 Q1350,210 1440,197
+          L1440,350 Z"
+          fill="url(#grassGrad)"/>
+        <!-- Bright grass edge highlight -->
+        <path d="M0,200
+          Q90,182 180,197 Q270,210 360,194
+          Q450,180 540,196 Q630,210 720,194
+          Q810,180 900,196 Q990,210 1080,194
+          Q1170,180 1260,196 Q1350,210 1440,197"
+          fill="none" stroke="#7EDE44" stroke-width="7"/>
+
+        <!-- === LEFT TREES (drawn on top of grass) === -->
+        <!-- Tree L1 — tallest, cx=108 -->
+        <rect x="103" y="183" width="10" height="24" fill="#3A2008"/>
+        <polygon points="55,204 161,204 108,152" fill="#1D5214"/>
+        <polygon points="65,160 151,160 108,112" fill="#27641C"/>
+        <polygon points="76,120 140,120 108,76"  fill="#2E7422"/>
+        <polygon points="86,84  130,84  108,46"  fill="#357C28"/>
+
+        <!-- Tree L2 — cx=50, slightly shorter -->
+        <rect x="46" y="186" width="8" height="20" fill="#3A2008"/>
+        <polygon points="8,202  92,202  50,158"  fill="#1D5214"/>
+        <polygon points="16,164 84,164  50,124"  fill="#27641C"/>
+        <polygon points="24,130 76,130  50,96"   fill="#2E7422"/>
+        <polygon points="30,100 70,100  50,70"   fill="#357C28"/>
+
+        <!-- Tree L3 — cx=178, medium -->
+        <rect x="174" y="188" width="8" height="18" fill="#3A2008"/>
+        <polygon points="140,202 216,202 178,164" fill="#1D5214"/>
+        <polygon points="148,168 208,168 178,132" fill="#27641C"/>
+        <polygon points="156,136 200,136 178,104" fill="#2E7422"/>
+
+        <!-- Tree L4 — cx=248, smaller, set back -->
+        <rect x="244" y="191" width="7" height="14" fill="#3A2008"/>
+        <polygon points="215,202 281,202 248,170" fill="#1D5214"/>
+        <polygon points="222,174 274,174 248,146" fill="#27641C"/>
+        <polygon points="229,150 267,150 248,124" fill="#2E7422"/>
+
+        <!-- === RIGHT TREES (mirrored) === -->
+        <!-- Tree R1 — tallest, cx=1332 -->
+        <rect x="1327" y="183" width="10" height="24" fill="#3A2008"/>
+        <polygon points="1279,204 1385,204 1332,152" fill="#1D5214"/>
+        <polygon points="1289,160 1375,160 1332,112" fill="#27641C"/>
+        <polygon points="1300,120 1364,120 1332,76"  fill="#2E7422"/>
+        <polygon points="1310,84  1354,84  1332,46"  fill="#357C28"/>
+
+        <!-- Tree R2 — cx=1390 -->
+        <rect x="1386" y="186" width="8" height="20" fill="#3A2008"/>
+        <polygon points="1348,202 1432,202 1390,158" fill="#1D5214"/>
+        <polygon points="1356,164 1424,164 1390,124" fill="#27641C"/>
+        <polygon points="1364,130 1416,130 1390,96"  fill="#2E7422"/>
+        <polygon points="1370,100 1410,100 1390,70"  fill="#357C28"/>
+
+        <!-- Tree R3 — cx=1262 -->
+        <rect x="1258" y="188" width="8" height="18" fill="#3A2008"/>
+        <polygon points="1224,202 1300,202 1262,164" fill="#1D5214"/>
+        <polygon points="1232,168 1292,168 1262,132" fill="#27641C"/>
+        <polygon points="1240,136 1284,136 1262,104" fill="#2E7422"/>
+
+        <!-- Tree R4 — cx=1192, smaller -->
+        <rect x="1188" y="191" width="7" height="14" fill="#3A2008"/>
+        <polygon points="1159,202 1225,202 1192,170" fill="#1D5214"/>
+        <polygon points="1166,174 1218,174 1192,146" fill="#27641C"/>
+        <polygon points="1173,150 1211,150 1192,124" fill="#2E7422"/>
+
       </svg>
     </div>
 
