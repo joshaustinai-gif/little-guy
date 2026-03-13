@@ -1,0 +1,41 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #F9F7F3;
+}
+
+#scene {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#guy {
+  position: absolute;
+  width: 120px;
+  user-select: none;
+  cursor: grab;
+  transform-origin: center bottom;
+}
+
+#guy.held {
+  cursor: grabbing;
+}
+
+#guy.squash {
+  animation: squash 0.35s ease-out forwards;
+}
+
+@keyframes squash {
+  0%   { transform: scaleX(1.4) scaleY(0.5); }
+  40%  { transform: scaleX(0.85) scaleY(1.15); }
+  70%  { transform: scaleX(1.05) scaleY(0.95); }
+  100% { transform: scaleX(1) scaleY(1); }
+}
