@@ -8,13 +8,74 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #F9F7F3;
+  background: linear-gradient(to bottom,
+    #2E7DBF 0%,
+    #4A9FD4 25%,
+    #78C0E8 60%,
+    #A8DDF5 85%,
+    #C4EDF8 100%
+  );
 }
+
+/* === Background layers === */
+
+#bg-mountains {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#bg-ground {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%; height: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#clouds {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  left: 0;
+  opacity: 0.88;
+}
+
+#visitors {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* === Cloud drift animations === */
+
+@keyframes cloudDriftRight {
+  from { transform: translateX(-500px); }
+  to   { transform: translateX(calc(100vw + 500px)); }
+}
+
+@keyframes cloudDriftLeft {
+  from { transform: translateX(calc(100vw + 500px)); }
+  to   { transform: translateX(-500px); }
+}
+
+/* === Scene (character) === */
 
 #scene {
   width: 100%;
   height: 100%;
   position: relative;
+  z-index: 10;
 }
 
 #guy {

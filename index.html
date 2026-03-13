@@ -8,9 +8,130 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+
+    <!-- Mountains -->
+    <div id="bg-mountains">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="none"
+           width="100%" height="100%"
+           xmlns="http://www.w3.org/2000/svg">
+        <!-- Far range (hazy atmospheric blue-grey) -->
+        <polygon
+          points="0,900 0,455 80,390 180,440 280,335 400,408 500,290 620,362 740,308 860,382 980,296 1090,374 1200,314 1320,368 1440,360 1440,900"
+          fill="#B0C4D8"/>
+        <!-- Near range (deeper blue-slate) -->
+        <polygon
+          points="0,900 0,615 120,560 240,600 380,518 500,574 640,500 760,558 880,510 1010,562 1130,496 1260,548 1380,506 1440,542 1440,900"
+          fill="#6888A0"/>
+      </svg>
+    </div>
+
+    <!-- Ground / grass (150px tall, matches GROUND_PADDING in main.js) -->
+    <div id="bg-ground">
+      <svg viewBox="0 0 1440 150" preserveAspectRatio="none"
+           width="100%" height="100%"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,150 L0,20
+          Q60,4 120,17 Q180,28 240,14 Q300,2 360,16
+          Q420,28 480,13 Q540,1 600,15
+          Q660,27 720,13 Q780,1 840,15
+          Q900,27 960,13 Q1020,1 1080,15
+          Q1140,27 1200,13 Q1260,1 1320,15
+          Q1380,27 1440,14 L1440,150 Z"
+          fill="#4A9228"/>
+        <path d="M0,20
+          Q60,4 120,17 Q180,28 240,14 Q300,2 360,16
+          Q420,28 480,13 Q540,1 600,15
+          Q660,27 720,13 Q780,1 840,15
+          Q900,27 960,13 Q1020,1 1080,15
+          Q1140,27 1200,13 Q1260,1 1320,15
+          Q1380,27 1440,14"
+          fill="none" stroke="#72D438" stroke-width="9"/>
+      </svg>
+    </div>
+
+    <!-- Clouds -->
+    <div id="clouds">
+      <!-- Large, slow, drifts right -->
+      <div class="cloud" style="top:7%; animation:cloudDriftRight 88s -18s linear infinite;">
+        <svg viewBox="0 0 280 82" width="280" height="82" xmlns="http://www.w3.org/2000/svg">
+          <g fill="white">
+            <ellipse cx="58"  cy="60" rx="54" ry="28"/>
+            <ellipse cx="108" cy="46" rx="48" ry="36"/>
+            <ellipse cx="162" cy="42" rx="52" ry="38"/>
+            <ellipse cx="214" cy="52" rx="44" ry="30"/>
+            <ellipse cx="252" cy="60" rx="34" ry="24"/>
+            <rect x="18" y="60" width="244" height="22" rx="11"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Medium, drifts right -->
+      <div class="cloud" style="top:17%; animation:cloudDriftRight 58s -38s linear infinite;">
+        <svg viewBox="0 0 190 64" width="190" height="64" xmlns="http://www.w3.org/2000/svg">
+          <g fill="white">
+            <ellipse cx="44"  cy="46" rx="40" ry="24"/>
+            <ellipse cx="88"  cy="34" rx="44" ry="30"/>
+            <ellipse cx="140" cy="40" rx="40" ry="26"/>
+            <rect x="10" y="46" width="168" height="18" rx="9"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Small, fast, drifts right -->
+      <div class="cloud" style="top:5%; animation:cloudDriftRight 42s -8s linear infinite;">
+        <svg viewBox="0 0 130 50" width="130" height="50" xmlns="http://www.w3.org/2000/svg">
+          <g fill="white">
+            <ellipse cx="34"  cy="36" rx="30" ry="20"/>
+            <ellipse cx="66"  cy="26" rx="30" ry="24"/>
+            <ellipse cx="96"  cy="34" rx="28" ry="20"/>
+            <rect x="8" y="36" width="116" height="16" rx="8"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Large, slow, drifts left -->
+      <div class="cloud" style="top:22%; animation:cloudDriftLeft 95s -55s linear infinite;">
+        <svg viewBox="0 0 260 76" width="260" height="76" xmlns="http://www.w3.org/2000/svg">
+          <g fill="white">
+            <ellipse cx="55"  cy="56" rx="50" ry="26"/>
+            <ellipse cx="102" cy="42" rx="46" ry="34"/>
+            <ellipse cx="154" cy="38" rx="50" ry="36"/>
+            <ellipse cx="202" cy="48" rx="42" ry="28"/>
+            <ellipse cx="238" cy="56" rx="30" ry="22"/>
+            <rect x="16" y="56" width="232" height="20" rx="10"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Medium, drifts left -->
+      <div class="cloud" style="top:12%; animation:cloudDriftLeft 66s -22s linear infinite;">
+        <svg viewBox="0 0 200 68" width="200" height="68" xmlns="http://www.w3.org/2000/svg">
+          <g fill="white">
+            <ellipse cx="46"  cy="50" rx="42" ry="24"/>
+            <ellipse cx="94"  cy="36" rx="46" ry="32"/>
+            <ellipse cx="148" cy="42" rx="42" ry="28"/>
+            <rect x="12" y="50" width="178" height="18" rx="9"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Small, fast, drifts left -->
+      <div class="cloud" style="top:25%; animation:cloudDriftLeft 46s -30s linear infinite;">
+        <svg viewBox="0 0 120 46" width="120" height="46" xmlns="http://www.w3.org/2000/svg">
+          <g fill="white">
+            <ellipse cx="30"  cy="34" rx="28" ry="18"/>
+            <ellipse cx="60"  cy="24" rx="28" ry="22"/>
+            <ellipse cx="90"  cy="32" rx="26" ry="18"/>
+            <rect x="6" y="34" width="108" height="14" rx="7"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Visitor container (birds, blimps, hot air balloons) -->
+    <div id="visitors"></div>
+
+    <!-- Character -->
     <div id="scene">
       <img id="guy" src="/dangling.png" alt="little guy" draggable="false" />
     </div>
+
     <script type="module" src="/src/main.js"></script>
+
   </body>
 </html>

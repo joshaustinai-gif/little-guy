@@ -1,3 +1,5 @@
+import './scene.js'
+
 const STANDING = '/dangling.png'
 const DANGLING = '/standing.png'
 const FALLING  = '/falling.png'
