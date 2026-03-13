@@ -1,7 +1,7 @@
 import './scene.js'
 
-const STANDING = '/dangling.png'
-const DANGLING = '/standing.png'
+const STANDING = '/standing.png'
+const DANGLING = '/dangling.png'
 const FALLING  = '/falling.png'
 
 const guy = document.getElementById('guy')
